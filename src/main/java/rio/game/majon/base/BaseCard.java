@@ -12,7 +12,12 @@ public class BaseCard {
 
     private int cardValue;// 值
 
-    private int cardStatus;// 状态
+    @Override
+    public String toString() {
+        return "[type-"+cardType+",value-"+cardValue+"]";
+    }
+
+    private int cardStatus = BaseConst.READY;// 状态
 
     private int currPosition;// 所属位置
 
@@ -20,7 +25,9 @@ public class BaseCard {
         return currPosition;
     }
 
-
+    public boolean compCard(BaseCard card){
+        return getCardType()==card.getCardType()&&getCardValue()==card.getCardValue();
+    }
 
     public String getUid() {
         return uid;

@@ -1,15 +1,20 @@
 package rio.game.majon.core;
 
 import rio.game.majon.base.BaseCard;
+import rio.game.majon.base.BaseConst;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2017/2/15.
  * 牌桌，负责洗牌、发牌
  */
 public class CardTable {
+
+    private final int[] types = {0,1,2,3};
 
     private Player[] players = new Player[4]; // 玩家
 
@@ -31,11 +36,43 @@ public class CardTable {
         // TODO: 2017/2/15
     }
 
+    private boolean checkWash(BaseCard card){
+        int times = 0;
+        for (BaseCard tmp:cardRoom){
+            times += tmp.compCard(card)?1:0;
+        }
+        return times < 4;
+    }
+
+    private BaseCard createRandomCard(){
+        BaseCard card = new BaseCard(UUID.randomUUID().toString());
+        Random rd = new Random();
+        int tmp = rd.nextInt(4);
+        card.setCardType(tmp);
+        if (tmp == BaseConst.FENG){
+            card.setCardValue(rd.nextInt(7));
+        }else {
+            card.setCardValue(rd.nextInt(9));
+        }
+        return card;
+    }
+
     /**
      * 洗牌
      */
     public void washCard(){
-        // TODO: 2017/2/15
+        while (cardRoom.size()<144){
+            BaseCard card = createRandomCard();
+            if (checkWash(card)){
+                cardRoom.add(card);
+            }
+        }
+        System.out.println(cardRoom);
+    }
+
+    public static void main(String... args){
+        CardTable ct = new CardTable();
+        ct.washCard();
     }
 
     /**
