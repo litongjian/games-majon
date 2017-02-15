@@ -147,7 +147,7 @@ public class Player {
     public boolean eatCard(BaseCard card, Player player) {
         if (getCurrPosition()==0 && player.getCurrPosition()!=3 ||getCurrPosition()-player.getCurrPosition()!=1)
             return false;
-        
+        // TODO: 2017/2/15   
         return true;
     }
 
@@ -158,7 +158,7 @@ public class Player {
      * @param player
      */
     public boolean touchCard(BaseCard card, Player player) {
-
+        // TODO: 2017/2/15  
         return true;
     }
 
@@ -169,6 +169,7 @@ public class Player {
      * @param player
      */
     public boolean brightCard(BaseCard card, Player player) {
+        // TODO: 2017/2/15  
         return true;
     }
 
@@ -178,8 +179,10 @@ public class Player {
      * @param card
      */
     public boolean darkCard(BaseCard card) {
+        // TODO: 2017/2/15  
         return true;
     }
+
 
     private int currSome = 0; // 当前番数
 
