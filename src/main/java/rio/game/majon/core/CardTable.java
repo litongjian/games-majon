@@ -3,6 +3,7 @@ package rio.game.majon.core;
 import rio.game.majon.base.BaseCard;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/2/15.
@@ -15,6 +16,12 @@ public class CardTable {
     private ArrayList<BaseCard> cardRoom = new ArrayList<BaseCard>(); // 牌库
 
     private ArrayList<BaseCard> cardPool = new ArrayList<BaseCard>(); // 牌池
+
+    private BaseCard standbyCard; // 当前出的牌
+
+    private BaseCard kingCard; // 当前王牌
+
+    private List<BaseCard> queenCard; // 当前皮子
 
     /**
      * 胡牌
@@ -32,6 +39,7 @@ public class CardTable {
     }
 
     /**
+     * 发牌
      * @param player
      * @param num
      */
